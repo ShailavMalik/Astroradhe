@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astroradhe - India's Best Astrologers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="top-banner">
+        <span>✨ Welcome to AstroRadhe — India's Most Trusted Astrology Platform. Get your first consultation today!
+            ✨</span>
+    </div>
+
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+            <div class="logo-area">
+               
+                    <img src="images/logo.png" alt="Logo" class="logo-img">
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="wallet-nav-info"
+                style="margin-right: 15px; display: flex; align-items: center; gap: 5px; background: #fff3e0; padding: 5px 10px; border-radius: 20px; border: 1px solid #ff6600;">
+                <i class="fa fa-wallet" style="color: #ff6600;"></i>
+                <span id="nav-balance" style="font-weight: bold; color: #333;">₹0.00</span>
+            </div>
+
+            <button type="button" id="lang-btn" class="language-btn">Language: EN</button>
+
+            <div class="login-action" id="login-btn">
+                <i class="fa fa-sign-in-alt"></i>
+                <span>Login</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-area">
+                <img src="images/logo.png" alt="Logo" class="logo-img">
+            </div>
+        </div>
+        <i class="fa fa-times close-sidebar" onclick="toggleSidebar()"></i>
+
+        <nav class="menu-items">
+            <a href="#"><i class="fa fa-home"></i> Home</a>
+
+            <a href="#"><i class="fa fa-wallet"></i> My Wallet</a>
+            <a href="#"><i class="fa fa-history"></i> Recharge History</a>
+            <a href="#"><i class="fa fa-list-alt"></i> Wallet History</a>
+            <hr>
+
+            <a href="#"><i class="fa fa-star"></i> Free Kundli</a>
+
+            <div class="dropdown-container">
+                <div class="dropdown-btn" onclick="toggleDropdown('horoscope-drop')">
+                    <span><i class="fa fa-sun"></i> Horoscopes</span>
+                    <i class="fa fa-caret-down"></i>
+                </div>
+                <div id="horoscope-drop" class="dropdown-content">
+                    <a href="#">Daily Horoscope</a>
+                    <a href="#">Weekly Horoscope</a>
+                    <a href="#">Monthly Horoscope</a>
+                </div>
+            </div>
+
+            <div class="dropdown-container">
+                <div class="dropdown-btn" onclick="toggleDropdown('calc-drop')">
+                    <span><i class="fa fa-calculator"></i> Calculators</span>
+                    <i class="fa fa-caret-down"></i>
+                </div>
+                <div id="calc-drop" class="dropdown-content">
+                    <a href="#">Love Calculator</a>
+                    <a href="#">Kundli Matching</a>
+                    <a href="#">Panchang</a>
+                </div>
+            </div>
+
+            <a href="#"><i class="fa fa-comments"></i> Consult Astrologer</a>
+
+            <hr>
+            <a href="#"><i class="fa fa-info-circle"></i> About Us</a>
+            <a href="#"><i class="fa fa-lock"></i> Privacy Policy</a>
+            <a href="#" class="logout-link">
+                <i class="fa fa-sign-out-alt"></i> Logout
+            </a>
+        </nav>
+    </div>
+
+    <section class="hero-section">
+        <h1 class="main-title">Talk to India's Best Astrologers</h1>
+        <div class="hero-card-container">
+            <div class="hero-card">
+                <div class="hero-content">
+                    <p class="astro-name-label">Astrologer</p>
+                    <h2 class="astro-name">Aanshu Mishra</h2>
+                    <button type="button" class="chat-btn-hero" onclick="openChatBox()">
+                        Chat with Astrologer
+                    </button>
+                </div>
+                <div class="hero-main-img">
+                    <img src="images/astrologer.jpeg" alt="Main Astrologer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container recharge-wallet-module" style="margin-top: 20px;">
+        <div class="astro-main-card" style="display: block; padding: 20px;">
+            <h3 style="color: #ff6600; margin-bottom: 15px;"><i class="fa fa-bolt"></i> Recharge Your Wallet</h3>
+
+            <div class="recharge-options" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+                <button type="button" class="card-btn recharge-opt" onclick="selectAmount(this)"
+                    style="width: auto; padding: 5px 15px; background: white; color: #333; border: 1px solid #ccc;">₹100</button>
+                <button type="button" class="card-btn recharge-opt" onclick="selectAmount(this)"
+                    style="width: auto; padding: 5px 15px; background: white; color: #333; border: 1px solid #ccc;">₹500</button>
+                <button type="button" class="card-btn recharge-opt" onclick="selectAmount(this)"
+                    style="width: auto; padding: 5px 15px; background: white; color: #333; border: 1px solid #ccc;">₹1000</button>
+            </div>
+
+            <div class="coupon-module" style="display: flex; gap: 10px; align-items: center;">
+                <input type="text" id="coupon-code" placeholder="Enter Coupon Code"
+                    style="flex: 1; padding: 10px; border: 1px dashed #28a745; border-radius: 5px;">
+                <button type="button" class="card-btn" onclick="applyCoupon()"
+                    style="width: auto; padding: 10px 20px; background: #28a745;">Apply</button>
+            </div>
+
+            <button type="button" class="card-btn call-btn-card" onclick="addMoney()"
+                style="width: 100%; margin-top: 15px;">Add Money to Wallet</button>
+        </div>
+    </section>
+
+    <section class="container astro-card-section">
+        <div class="astro-main-card">
+            <div class="astro-img-container">
+                <img src="images/astro_image.jpg" alt="Aansu Mishra" class="astro-card-img">
+                <div class="astro-status-tags" style="display: flex; flex-direction: column; gap: 8px;">
+
+                    <div id="chat-status-bg"
+                        style="display: flex; align-items: center; justify-content: space-between; background: #e8f5e9; padding: 4px 8px; border-radius: 5px; border: 1px solid #28a745;">
+                        <span id="chat-status-text" style="font-size: 11px; font-weight: bold; color: #1b5e20;">Chat
+                            Online</span>
+                        <label class="switch"
+                            style="position: relative; display: inline-block; width: 30px; height: 16px;">
+                            <input type="checkbox" id="chat-toggle" onchange="toggleStatus('chat')" checked
+                                style="opacity: 0; width: 0; height: 0;">
+                            <span class="slider"
+                                style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #28a745; transition: .4s; border-radius: 20px;"></span>
+                        </label>
+                    </div>
+
+                    <div id="call-status-bg"
+                        style="display: flex; align-items: center; justify-content: space-between; background: #ffebee; padding: 4px 8px; border-radius: 5px; border: 1px solid #d32f2f;">
+                        <span id="call-status-text" style="font-size: 11px; font-weight: bold; color: #b71c1c;">Call
+                            Offline</span>
+                        <label class="switch"
+                            style="position: relative; display: inline-block; width: 30px; height: 16px;">
+                            <input type="checkbox" id="call-toggle" onchange="toggleStatus('call')"
+                                style="opacity: 0; width: 0; height: 0;">
+                            <span class="slider"
+                                style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px;"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="astro-details">
+                <h2 class="astro-name-title">Astrologer Aansu Mishra</h2>
+
+                <div class="astro-rating" style="color: #ffcc00; margin-bottom: 5px;">
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                        class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                    <span style="color: #666; font-size: 14px;">(4.5)</span>
+                </div>
+
+                <p class="astro-specialty">Vedic Astrology, Kundli Reading</p>
+                <p class="astro-experience">Exp: 10+ Years | Language: Hindi, English</p>
+
+                <div class="astro-pricing">
+                    <span class="price-tag">₹15/min</span>
+                </div>
+
+                <div class="astro-card-actions">
+                    <button type="button" class="card-btn chat-btn-card" onclick="openChatBox()">
+                        <i class="fas fa-comment"></i> Chat now
+                    </button>
+                    <button type="button" class="card-btn call-btn-card" onclick="startCall('Aansu Mishra')">
+                        <i class="fas fa-phone"></i> Call now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="callModal" class="chat-popup"
+        style="display:none; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; padding: 20px; width: 280px;">
+        <div class="chat-header"><span>Connecting Call...</span></div>
+        <div style="padding: 20px;">
+            <div class="loader-icon" style="font-size: 40px; color: #ff6600; margin-bottom: 10px;">
+                <i class="fa fa-phone-volume fa-beat"></i>
+            </div>
+            <p>Please wait, connecting you with <br><strong>Aansu Mishra</strong></p>
+            <button onclick="document.getElementById('callModal').style.display='none'" class="card-btn"
+                style="background: red; margin-top: 15px;">Cancel</button>
+        </div>
+    </div>
+
+    <div id="reviewModal" class="chat-popup"
+        style="display:none; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px;">
+        <div class="chat-header"><span>Rate your Consultation</span></div>
+        <div style="padding: 15px; text-align: center;">
+            <p style="font-size: 14px; margin-bottom: 10px;">How was your experience?</p>
+            <div class="star-input" style="color: #ffcc00; font-size: 24px; margin-bottom: 15px;">
+                <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i
+                    class="far fa-star"></i><i class="far fa-star"></i>
+            </div>
+            <textarea placeholder="Write your review here..."
+                style="width: 100%; height: 60px; padding: 8px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+            <button class="card-btn chat-btn-card" style="margin-top: 10px;"
+                onclick="document.getElementById('reviewModal').style.display='none'">Submit Review</button>
+        </div>
+    </div>
+
+    <div id="chatPopUp" class="chat-popup" style="display:none;">
+        <div class="chat-header">
+            <span>Chat with Aansu Mishra</span>
+            <button onclick="closeChatBox()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <p class="bot-msg">Namaste! How can I help you today?</p>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="userMsg" placeholder="Type message...">
+            <button onclick="sendMessage()">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-top-orange">
+            <h3>Follow Us</h3>
+        </div>
+        <div class="footer-bottom-green">
+            <div class="social-row">
+                <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon ig"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon yt"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon ln"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon pt"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
